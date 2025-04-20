@@ -1,12 +1,12 @@
 import { Outlet } from "react-router-dom";
-import Footer from "@/components/common/Footer";
-import Header from "@/components/common/Header";
+import Footer from "@/components/client/Footer";
+import Header from "@/components/client/Header";
 
 const ClientLayout = () => {
   return (
-    <div className="flex min-h-screen flex-col bg-neutral-100">
+    <div className="bg-dove-gray-50 flex min-h-screen flex-col">
       <Header />
-      <main className="flex-grow">
+      <main className="flex flex-grow items-center justify-center">
         <Outlet />
       </main>
       {/* <Footer /> */}
