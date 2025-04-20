@@ -35,7 +35,6 @@ const Header = () => {
               aria-expanded={isMenuOpen}
               size="icon"
             >
-              <span className="sr-only">Open main menu</span>
               {isMenuOpen ? (
                 <X className="h-6 w-6 fill-current" />
               ) : (

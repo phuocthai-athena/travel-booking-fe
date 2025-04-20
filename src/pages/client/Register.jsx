@@ -1,11 +1,9 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Lock, Mail, User } from "lucide-react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
-import * as z from "zod";
-import { TRAVEL_BOOKING_APP_NAME } from "@/lib/constants";
-import Logo from "@/components/client/Logo";
-import { Button } from "@/components/ui/button";
+import { formSchemaAuth } from "@/lib/constants";
+import FormAuthActions from "@/components/client/FormAuthActions";
+import FormAuthHeader from "@/components/client/FormAuthHeader";
 import {
   Form,
   FormControl,
@@ -16,22 +14,9 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 
-const schema = z.object({
-  fullName: z.string().min(1, "Họ và tên không được để trống").trim(),
-  email: z.string().email("Email không hợp lệ").min(1, "Email không được để trống").trim(),
-  password: z
-    .string()
-    .min(8, "Mật khẩu phải có ít nhất 8 ký tự")
-    .max(32, "Mật khẩu không được dài quá 32 ký tự")
-    .regex(/[a-z]/, "Mật khẩu phải chứa ít nhất một chữ cái thường")
-    .regex(/[A-Z]/, "Mật khẩu phải chứa ít nhất một chữ cái hoa")
-    .regex(/[^a-zA-Z0-9]/, "Mật khẩu phải chứa ít nhất một ký tự đặc biệt")
-    .trim(),
-});
-
 const Register = () => {
   const form = useForm({
-    resolver: zodResolver(schema),
+    resolver: zodResolver(formSchemaAuth),
     defaultValues: {
       fullName: "",
       email: "",
@@ -46,17 +31,7 @@ const Register = () => {
   return (
     <div className="font-inter flex items-center justify-center">
       <div className="bg-dove-gray-0 flex w-full max-w-md flex-col gap-8 rounded p-8 shadow-lg">
-        <div className="flex justify-center">
-          <Logo />
-        </div>
-        <div className="flex flex-col items-center justify-center gap-1">
-          <h2 className="text-midnight-blue-950 text-center text-2xl leading-[140%] font-bold">
-            Đăng ký
-          </h2>
-          <p className="text-dove-dove-graytext-midnight-blue-950 text-center text-sm leading-[140%] font-normal">
-            Cùng {TRAVEL_BOOKING_APP_NAME} đồng hành với bạn trong các chuyến đi.
-          </p>
-        </div>
+        <FormAuthHeader title="Đăng ký" />
 
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -135,17 +110,12 @@ const Register = () => {
             />
 
             {/* Nút Đăng ký */}
-            <div className="mt-7 flex flex-col items-center justify-center gap-3">
-              <Button type="submit" className="">
-                Đăng ký
-              </Button>
-              <p className="text-dove-gray-400 text-center text-sm">
-                Đã có tài khoản?{" "}
-                <Button asChild variant="link" className="ml-2 p-0">
-                  <Link to="/login">Đăng nhập</Link>
-                </Button>
-              </p>
-            </div>
+            <FormAuthActions
+              route="/login"
+              btnPrimary="Đăng ký"
+              btnSecondary="Đăng nhập"
+              questionTitle="Đã có tài khoản?"
+            />
           </form>
         </Form>
       </div>
