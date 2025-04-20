@@ -1,13 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { NAV_BAR_ROUTES } from "@/lib/constants";
 import { Button } from "../ui/button";
-
-const NAV_BAR_ROUTES = [
-  { key: "trang-chu", value: "Trang chủ", route: "/" },
-  { key: "tour", value: "Tour", route: "/tour" },
-  { key: "cam-nang-du-lich", value: "Cẩm nang du lịch", route: "/cam-nang-du-lich" },
-  { key: "lien-he", value: "Liên hệ", route: "/lien-he" },
-];
 
 const Navbar = ({ isMenuOpen }) => {
   return (
