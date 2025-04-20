@@ -1,7 +1,6 @@
 import ClientLayout from "@/layouts/ClientLayout";
 import { clientRoutes } from "@/routes/clientRoutes";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Login from "@/components/common/Login";
 
 const App = () => {
   return (
@@ -10,7 +9,7 @@ const App = () => {
         {/* Client Routes */}
         <Route element={<ClientLayout />}>
           {clientRoutes.map((route) => (
-            <Route key={route.path} path={route.path} element={<route.Component />} />
+            <Route key={route.path} path={route.path} element={<route.component />} />
           ))}
         </Route>
 
@@ -20,9 +19,6 @@ const App = () => {
             <Route key={route.path} path={route.path} element={<route.Component />} />
           ))}
         </Route> */}
-
-        {/* Login Route */}
-        <Route path="/login" element={<Login />} />
 
         {/* 404 */}
         <Route path="*" element={<div className="p-4 text-center">404 - Không tìm thấy</div>} />
