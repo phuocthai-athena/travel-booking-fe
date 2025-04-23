@@ -1,4 +1,3 @@
-// Helper function to handle API responses
 export const handleApiResponse = (response) => {
   // Check if response is successful
   if (response.status >= 200 && response.status < 300) {
@@ -17,7 +16,6 @@ export const handleApiResponse = (response) => {
   };
 };
 
-// Helper function to handle API errors
 export const handleApiError = (error) => {
   // Check if error has a response
   if (error.response) {
@@ -48,7 +46,6 @@ export const handleApiError = (error) => {
   };
 };
 
-// Helper function to create API request with error handling
 export const apiRequest = async (apiCall) => {
   try {
     const response = await apiCall();

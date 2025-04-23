@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "../ui/button";
 
 const FormAuthActions = ({
+  disabled,
   route = "",
   btnPrimary = "",
   questionTitle = "",
@@ -10,7 +11,7 @@ const FormAuthActions = ({
 }) => {
   return (
     <div className="mt-7 flex flex-col items-center justify-center gap-3">
-      <Button type="submit" className="">
+      <Button type="submit" disabled={disabled}>
         {btnPrimary}
       </Button>
       <p className="text-dove-gray-400 text-center text-sm">

@@ -1,5 +1,6 @@
-import ClientLayout from "@/layouts/ClientLayout";
-import { clientRoutes } from "@/routes/clientRoutes";
+import ClientLayout from "@/layouts/client-layout";
+import { clientRoutes } from "@/routes/client-routes";
+import ProtectedRoute from "@/routes/protected-route";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 const App = () => {
@@ -8,9 +9,23 @@ const App = () => {
       <Routes>
         {/* Client Routes */}
         <Route element={<ClientLayout />}>
-          {clientRoutes.map((route) => (
-            <Route key={route.path} path={route.path} element={<route.component />} />
-          ))}
+          {clientRoutes.map((route) => {
+            // Wrap auth routes (login/register) with ProtectedRoute
+            if (route.path === "/login" || route.path === "/register") {
+              return (
+                <Route
+                  key={route.path}
+                  path={route.path}
+                  element={
+                    <ProtectedRoute isAuthRoute>
+                      <route.component />
+                    </ProtectedRoute>
+                  }
+                />
+              );
+            }
+            return <Route key={route.path} path={route.path} element={<route.component />} />;
+          })}
         </Route>
 
         {/* Admin Routes (Protected) */}

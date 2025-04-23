@@ -1,6 +1,6 @@
 import React from "react";
 import { TRAVEL_BOOKING_APP_NAME } from "@/lib/constants";
-import Logo from "@/components/client/Logo";
+import Logo from "@/components/client/logo";
 
 const FormAuthHeader = ({ title = "" }) => {
   return (

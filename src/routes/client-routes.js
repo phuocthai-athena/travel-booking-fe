@@ -1,9 +1,9 @@
-import Contact from "@/pages/client/Contact";
-import Home from "@/pages/client/Home";
-import Login from "@/pages/client/Login";
-import Register from "@/pages/client/Register";
-import Tour from "@/pages/client/Tour";
-import TravelGuide from "@/pages/client/TravelGuide";
+import Contact from "@/pages/client/contact";
+import Home from "@/pages/client/home";
+import Login from "@/pages/client/login";
+import Register from "@/pages/client/register";
+import Tour from "@/pages/client/tour";
+import TravelGuide from "@/pages/client/travel-guide";
 
 export const clientRoutes = [
   { path: "/", component: Home },
